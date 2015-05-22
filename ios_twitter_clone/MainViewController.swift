@@ -10,7 +10,9 @@ import UIKit
 import TwitterKit
 
 class MainViewController: UIViewController {
-
+    
+    var tweets: NSArray?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
@@ -23,12 +25,12 @@ class MainViewController: UIViewController {
         let request = Twitter.sharedInstance().APIClient.URLRequestWithMethod("GET", URL: statusesShowEndpoint, parameters: nil, error: &clientError)
         
         if request != nil {
+            
             Twitter.sharedInstance().APIClient.sendTwitterRequest(request) {
                 (response, data, connectionError) -> Void in
                 if (connectionError == nil) {
                     var jsonError : NSError?
                     let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError)
-                    println(json)
                 }else {
                     println("Error: \(connectionError)")
                 }
