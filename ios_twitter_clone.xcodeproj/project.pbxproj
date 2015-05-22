@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C0EBA701B0F102000059183 /* ActionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0EBA6F1B0F102000059183 /* ActionBarView.swift */; };
 		1CB43C521B0EE1000094615B /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB43C4E1B0EE1000094615B /* Fabric.framework */; };
 		1CB43C531B0EE1000094615B /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB43C4F1B0EE1000094615B /* TwitterKit.framework */; };
 		1CB43C541B0EE1000094615B /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1CB43C501B0EE1000094615B /* TwitterKitResources.bundle */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		0AE460C2E9341EE8EB945B2F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		1C0EBA6F1B0F102000059183 /* ActionBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionBarView.swift; sourceTree = "<group>"; };
 		1CB43C4E1B0EE1000094615B /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		1CB43C4F1B0EE1000094615B /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		1CB43C501B0EE1000094615B /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				1CDCB6941B0EDDE1003797B4 /* Images.xcassets */,
 				1CDCB6961B0EDDE1003797B4 /* LaunchScreen.xib */,
 				1CDCB68B1B0EDDE1003797B4 /* Supporting Files */,
+				1C0EBA6F1B0F102000059183 /* ActionBarView.swift */,
 			);
 			path = ios_twitter_clone;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C0EBA701B0F102000059183 /* ActionBarView.swift in Sources */,
 				1CDCB6901B0EDDE1003797B4 /* LoginViewController.swift in Sources */,
 				1CDCB68E1B0EDDE1003797B4 /* AppDelegate.swift in Sources */,
 				1CB43C581B0EE9CA0094615B /* Auth.swift in Sources */,

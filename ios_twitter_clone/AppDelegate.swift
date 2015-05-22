@@ -28,8 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainViewController = LoginViewController()
         self.window?.rootViewController = mainViewController
         self.window?.makeKeyAndVisible()
-        
-        println("FSDFSDFSD")
         return true
     }
 
