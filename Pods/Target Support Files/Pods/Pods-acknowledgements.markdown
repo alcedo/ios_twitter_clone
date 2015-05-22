@@ -24,6 +24,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## OMGHTTPURLRQ
+
+See README.markdown for full license text.
+
+## PromiseKit
+
+@see README
+
 ## SnapKit
 
 Copyright (c) 2011-Present SnapKit Team - https://github.com/SnapKit

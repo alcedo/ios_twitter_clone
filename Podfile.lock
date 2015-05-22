@@ -20,14 +20,36 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - OMGHTTPURLRQ (2.1):
+    - OMGHTTPURLRQ/RQ (= 2.1)
+  - OMGHTTPURLRQ/FormURLEncode (2.1)
+  - OMGHTTPURLRQ/RQ (2.1):
+    - OMGHTTPURLRQ/FormURLEncode
+    - OMGHTTPURLRQ/UserAgent
+  - OMGHTTPURLRQ/UserAgent (2.1)
+  - PromiseKit (2.0.0):
+    - PromiseKit/Foundation (= 2.0.0)
+    - PromiseKit/QuartzCore (= 2.0.0)
+    - PromiseKit/UIKit (= 2.0.0)
+  - PromiseKit/CorePromise (2.0.0)
+  - PromiseKit/Foundation (2.0.0):
+    - OMGHTTPURLRQ
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (2.0.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (2.0.0):
+    - PromiseKit/CorePromise
   - SnapKit (0.11.0)
 
 DEPENDENCIES:
   - AFNetworking
+  - PromiseKit
   - SnapKit
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  OMGHTTPURLRQ: f8c515dfd2f57a5d74c710978f600231f52afec5
+  PromiseKit: 94a571258076767ae3458a4329bc6630f881f711
   SnapKit: 5194d53cee209d337a989919ff66a70b7aa3dda3
 
 COCOAPODS: 0.37.0

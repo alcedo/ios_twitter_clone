@@ -4,3 +4,4 @@ use_frameworks!
 
 pod 'SnapKit'
 pod "AFNetworking"
+pod 'PromiseKit'
