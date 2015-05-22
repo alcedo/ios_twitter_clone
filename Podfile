@@ -5,3 +5,4 @@ use_frameworks!
 pod 'SnapKit'
 pod "AFNetworking"
 pod 'PromiseKit'
+pod "SwiftyJSON", ">= 2.2"
