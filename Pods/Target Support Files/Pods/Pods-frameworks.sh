@@ -49,6 +49,7 @@ code_sign() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'AFNetworking.framework'
+  install_framework 'Alamofire.framework'
   install_framework 'OMGHTTPURLRQ.framework'
   install_framework 'PromiseKit.framework'
   install_framework 'SnapKit.framework'
@@ -56,6 +57,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'AFNetworking.framework'
+  install_framework 'Alamofire.framework'
   install_framework 'OMGHTTPURLRQ.framework'
   install_framework 'PromiseKit.framework'
   install_framework 'SnapKit.framework'

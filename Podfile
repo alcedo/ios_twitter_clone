@@ -6,3 +6,5 @@ pod 'SnapKit'
 pod "AFNetworking"
 pod 'PromiseKit'
 pod "SwiftyJSON", ">= 2.2"
+
+pod 'Alamofire', '~> 1.2'

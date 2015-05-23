@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-OMGHTTPURLRQ.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0DECA2CDEF8534780BFB41C9</key>
+		<key>0047601B5320964288656C18</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1736EE8B71ED9C29EBDC4B7F</key>
+		<key>731A6D0571E485E900B0B5D1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>46C0596C8CB3AA5166F234EC</key>
+		<key>73B19FA481499928ABFDD9FF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D10DBDF380E1974159ED35E</key>
+		<key>78070E564B02DD39E98C2B52</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F5376BF09B41751240A68AA7</key>
+		<key>95EE9C11A69748D204471B43</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FDB4DAB0EEB4D6AC21A9D807</key>
+		<key>9EEBCAF0D2A49529000F2934</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EBAB96596D2BB62A8AA2632B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -20,8 +20,11 @@ class ActionBarView: UIView {
         
         self.snp_makeConstraints { (make) -> Void in
             make.width.equalTo(400)
-            make.height.equalTo(20)
+            make.height.equalTo(55)
         }
+        
+        
+        let iconSize = 15
         
         self.reply = UIButton()
         let replyImage = UIImage(named: "reply")
@@ -29,6 +32,7 @@ class ActionBarView: UIView {
         self.addSubview(self.reply)
         self.reply.snp_makeConstraints { (make) -> Void in
             make.top.left.equalTo(self)
+            make.width.height.equalTo(iconSize)
         }
         
         self.star = UIButton()
@@ -36,6 +40,7 @@ class ActionBarView: UIView {
         self.star.setImage(starImage, forState: UIControlState.Normal)
         self.addSubview(self.star)
         self.star.snp_makeConstraints { (make) -> Void in
+            make.width.height.equalTo(iconSize)
             make.top.equalTo(self)
             make.left.equalTo(self.reply.snp_right).offset(30)
         }

@@ -11,6 +11,7 @@ import TwitterKit
 import SwiftyJSON
 import PromiseKit
 import SnapKit
+import Alamofire
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TWTRTweetViewDelegate {
     
@@ -68,20 +69,50 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if request != nil {
             
-            Twitter.sharedInstance().APIClient.sendTwitterRequest(request) {
-                (response, data, connectionError) -> Void in
-                if (connectionError == nil) {
-                    var jsonError : NSError?
-                    let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError)
-                    self.tweets = JSON(json!)
-                    if let jsonArray = json as? NSArray {
-                        self.tweetData = TWTRTweet.tweetsWithJSONArray(jsonArray as [AnyObject]) as! [TWTRTweet]
-                    }
-                    println(self.tweets![0]["text"])
-                }else {
-                    println("Error: \(connectionError)")
+//            let myreq = NSMutableURLRequest(URL: NSURL(string: "https://gist.githubusercontent.com/alcedo/5aa8ce42f516a68d52e5/raw/735556b91f6f673fb90757f1ea07fd495b0fb63e/twitter_home")!)
+//            
+//            myreq.HTTPMethod = "GET"
+//            var response: NSURLResponse
+//            var error: NSError
+//            NSURLConnection.sendAsynchronousRequest(myreq, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+//                println(NSString(data: data, encoding: NSUTF8StringEncoding))
+//                
+//                var jsonError : NSError?
+//                let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError)
+//                println(jsonError)
+//                if let jsonArray = json as? NSArray {
+//                    self.tweetData = TWTRTweet.tweetsWithJSONArray(jsonArray as [AnyObject]) as! [TWTRTweet]
+//                }
+//            }
+            
+            
+            Alamofire.request(.GET, "https://gist.githubusercontent.com/alcedo/5aa8ce42f516a68d52e5/raw/0334bf9f825cbc2f8c8978f4aa43f287745de1fa/twitter_home")
+                .responseJSON { (request, response, data, error) in
+                    self.tweetData = TWTRTweet.tweetsWithJSONArray(data as! [AnyObject]) as! [TWTRTweet]
+                    println(data)
+                    println(request)
+                    println(response)
+                    println(error)
                 }
-            }
+//
+//
+//            Twitter.sharedInstance().APIClient.sendTwitterRequest(request) {
+//                (response, data, connectionError) -> Void in
+//                if (connectionError == nil) {
+//                    var jsonError : NSError?
+//                    let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError)
+//                    self.tweets = JSON(json!)
+//                    if let jsonArray = json as? NSArray {
+//                        self.tweetData = TWTRTweet.tweetsWithJSONArray(jsonArray as [AnyObject]) as! [TWTRTweet]
+//                        println(jsonArray)
+//                    }
+//                    println(self.tweets![0]["text"])
+//                }else {
+//                    println("Error: \(connectionError)")
+//                }
+//            }
+
+            
         }else {
             println("Error: \(clientError)")
         }
@@ -107,6 +138,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.contentView.addSubview(ab)
         ab.snp_makeConstraints { (make) -> Void in
             make.bottom.equalTo(cell.contentView.snp_bottom)
+            make.right.equalTo(cell.contentView.snp_right).offset(40)
         }
         
         return cell
