@@ -19,9 +19,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     let tweetTableReuseIdentifier = "TweetCell"
     var tableView: UITableView!
     
+    var refreshControl: UIRefreshControl!
+    
     var tweetData: [TWTRTweet] = [] {
         didSet {
             self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
         }
     }
     
@@ -44,6 +47,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.registerClass(TWTRTweetTableViewCell.self, forCellReuseIdentifier: tweetTableReuseIdentifier)
+        
+        // refresh control 
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: "didRefreshTableView", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(self.refreshControl)
     }
     
     func didTapLogOutButton() {
@@ -53,6 +61,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func didTapNewTweetButton() {
         println("new tweet")
         
+    }
+    func didRefreshTableView() {
+        self.loadTweet()
     }
     
     func loadTweet() {
@@ -89,10 +100,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             Alamofire.request(.GET, "https://gist.githubusercontent.com/alcedo/5aa8ce42f516a68d52e5/raw/0334bf9f825cbc2f8c8978f4aa43f287745de1fa/twitter_home")
                 .responseJSON { (request, response, data, error) in
                     self.tweetData = TWTRTweet.tweetsWithJSONArray(data as! [AnyObject]) as! [TWTRTweet]
-                    println(data)
-                    println(request)
-                    println(response)
-                    println(error)
                 }
 //
 //
@@ -135,10 +142,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.configureWithTweet(tweet)
         cell.tweetView.delegate = self
         let ab = ActionBarView()
+        ab.delegate = self
+        ab.indexPath = indexPath
         cell.contentView.addSubview(ab)
         ab.snp_makeConstraints { (make) -> Void in
-            make.bottom.equalTo(cell.contentView.snp_bottom)
-            make.right.equalTo(cell.contentView.snp_right).offset(40)
+            make.top.equalTo(cell.contentView.snp_bottom).offset(-25)
+            make.left.equalTo(cell.contentView.snp_left).offset(40)
         }
         
         return cell
@@ -146,6 +155,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let tweet = self.tweetData[indexPath.row]
-        return TWTRTweetTableViewCell.heightForTweet(tweet, width: CGRectGetWidth(self.view.bounds))
+        return TWTRTweetTableViewCell.heightForTweet(tweet, width: CGRectGetWidth(self.view.bounds)) + 20
     }
 }
+
+extension MainViewController: TweetActionDelegate {
+    func didTapTweetReplyButton(indexPath: NSIndexPath) {
+        println("tap on reply btn: \(indexPath.row)")
+    }
+    
+    func didTapTweetStarButton(indexPath: NSIndexPath) {
+        println("tap on star btn: \(indexPath.row)")
+    }
+}
+

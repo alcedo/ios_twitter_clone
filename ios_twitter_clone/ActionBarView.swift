@@ -9,11 +9,18 @@
 import UIKit
 import SnapKit
 
+protocol TweetActionDelegate {
+    func didTapTweetReplyButton(indexPath: NSIndexPath)
+    func didTapTweetStarButton(indexPath: NSIndexPath)
+}
+
 class ActionBarView: UIView {
 
     var reply: UIButton!
     var retweet: UIButton!
     var star: UIButton!
+    var indexPath: NSIndexPath!
+    var delegate: TweetActionDelegate?
     
     convenience init() {
         self.init(frame: CGRectZero)
@@ -23,11 +30,11 @@ class ActionBarView: UIView {
             make.height.equalTo(55)
         }
         
-        
         let iconSize = 15
         
         self.reply = UIButton()
         let replyImage = UIImage(named: "reply")
+        self.reply.addTarget(self, action: "didTapReplyButton", forControlEvents: UIControlEvents.TouchUpInside)
         self.reply.setImage(replyImage, forState: UIControlState.Normal)
         self.addSubview(self.reply)
         self.reply.snp_makeConstraints { (make) -> Void in
@@ -36,6 +43,7 @@ class ActionBarView: UIView {
         }
         
         self.star = UIButton()
+        self.star.addTarget(self, action: "didTapStarButton", forControlEvents: UIControlEvents.TouchUpInside)
         let starImage = UIImage(named: "star")
         self.star.setImage(starImage, forState: UIControlState.Normal)
         self.addSubview(self.star)
@@ -47,12 +55,16 @@ class ActionBarView: UIView {
         
     }
     
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+    func didTapReplyButton() {
+        if let d = self.delegate {
+            d.didTapTweetReplyButton(self.indexPath)
+        }
     }
-    */
+    
+    func didTapStarButton() {
+        if let d = self.delegate {
+            d.didTapTweetStarButton(self.indexPath)
+        }
+    }
 
 }
