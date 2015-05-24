@@ -21,6 +21,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Alamofire (1.2.2)
+  - JLToast (1.2.3)
   - OMGHTTPURLRQ (2.1):
     - OMGHTTPURLRQ/RQ (= 2.1)
   - OMGHTTPURLRQ/FormURLEncode (2.1)
@@ -46,6 +47,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - Alamofire (~> 1.2)
+  - JLToast
   - PromiseKit
   - SnapKit
   - SwiftyJSON (>= 2.2)
@@ -53,6 +55,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   Alamofire: 11a6022f5089887d92ffb5a3014c97a0a915ab98
+  JLToast: fc26885fae255e31ba9bebc0f82ae2ab1140f503
   OMGHTTPURLRQ: f8c515dfd2f57a5d74c710978f600231f52afec5
   PromiseKit: 94a571258076767ae3458a4329bc6630f881f711
   SnapKit: 5194d53cee209d337a989919ff66a70b7aa3dda3
