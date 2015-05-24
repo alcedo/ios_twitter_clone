@@ -12,6 +12,7 @@ import SwiftyJSON
 import PromiseKit
 import SnapKit
 import Alamofire
+import SVProgressHUD
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TWTRTweetViewDelegate {
     
@@ -59,6 +60,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func didTapNewTweetButton() {
+        let vc = ComposeTweetViewController()
+        let nvc = UINavigationController(rootViewController: vc)
+        self.presentViewController(nvc, animated: true, completion: nil)
     }
     
     func didRefreshTableView() {
@@ -181,10 +185,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 extension MainViewController: TweetActionDelegate {
     func didTapTweetReplyButton(indexPath: NSIndexPath) {
         println("tap on reply btn: \(indexPath.row)")
+        SVProgressHUD.showSuccessWithStatus("Reply successful")
     }
     
     func didTapTweetStarButton(indexPath: NSIndexPath) {
         println("tap on star btn: \(indexPath.row)")
+        SVProgressHUD.showSuccessWithStatus("Starred successful")
     }
 }
 

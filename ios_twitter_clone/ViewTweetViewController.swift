@@ -76,8 +76,6 @@ class ViewTweetViewController: UIViewController, TweetActionDelegate {
     func didTapTweetReplyButton() {
         println("view tweet reply")
         SVProgressHUD.showSuccessWithStatus("Reply successful")
-//        JLToast.makeText("Some text").show()
-//        JLToast.makeText("Some text", duration: JLToastDelay.LongDelay).show()
     }
     func didTapTweetStarButton() {
         println("view tweet star")
