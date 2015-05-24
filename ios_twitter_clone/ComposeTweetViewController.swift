@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import TwitterKit
+import SwiftyJSON
 
 class ComposeTweetViewController: UIViewController, UITextViewDelegate {
     
     var composeField: UITextView!
+    var tweetText = "Test Tweet"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +42,44 @@ class ComposeTweetViewController: UIViewController, UITextViewDelegate {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
     func didTapTweetButton() {
-        println("tweet initiated")
+        self.postTweet()
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        self.tweetText = textView.text
     }
 
+    func postTweet() {
+        let endPoint = "https://api.twitter.com/1.1/statuses/update.json"
+        var clientError : NSError?
+        let params = ["status": self.tweetText]
+        let request = Twitter.sharedInstance().APIClient.URLRequestWithMethod("POST", URL: endPoint, parameters: params, error: &clientError)
+        
+        if request != nil {
+            
+            Twitter.sharedInstance().APIClient.sendTwitterRequest(request) {
+                (response, data, connectionError) -> Void in
+                if (connectionError == nil) {
+                    var jsonError : NSError?
+                    let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError)
+                    println(json!)
+//                    self.tweets = JSON(json!)
+//                    if let jsonArray = json as? NSArray {
+//                        self.tweetData = TWTRTweet.tweetsWithJSONArray(jsonArray as [AnyObject]) as! [TWTRTweet]
+//                        println(jsonArray)
+//                    }
+                }else {
+                    println("Error: \(connectionError)")
+                }
+            }
+            
+        }else {
+            println("Error: \(clientError)")
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
