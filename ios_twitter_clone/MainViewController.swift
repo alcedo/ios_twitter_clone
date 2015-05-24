@@ -59,9 +59,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func didTapNewTweetButton() {
-        println("new tweet")
-        
     }
+    
     func didRefreshTableView() {
         self.loadTweet()
     }
@@ -100,6 +99,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             Alamofire.request(.GET, "https://gist.githubusercontent.com/alcedo/5aa8ce42f516a68d52e5/raw/0334bf9f825cbc2f8c8978f4aa43f287745de1fa/twitter_home")
                 .responseJSON { (request, response, data, error) in
                     self.tweetData = TWTRTweet.tweetsWithJSONArray(data as! [AnyObject]) as! [TWTRTweet]
+                    self.tweets = JSON(data!)
                 }
 //
 //
@@ -141,6 +141,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = self.tableView.dequeueReusableCellWithIdentifier(self.tweetTableReuseIdentifier, forIndexPath: indexPath) as! TWTRTweetTableViewCell
         cell.configureWithTweet(tweet)
         cell.tweetView.delegate = self
+        cell.tweetView.tag = indexPath.row
         let ab = ActionBarView()
         ab.delegate = self
         ab.indexPath = indexPath
@@ -153,10 +154,28 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let tweetId = self.tweets![indexPath.row]["id_str"]
+        self.showDetailedTweet(tweetId.stringValue)
+    }
+    
+    func tweetView(tweetView: TWTRTweetView!, didSelectTweet tweet: TWTRTweet!) {
+        let tweetId = self.tweets![tweetView.tag]["id_str"]
+        self.showDetailedTweet(tweetId.stringValue)
+    }
+    
+    func showDetailedTweet(id: String) {
+        let vc = ViewTweetViewController()
+        let tweets = self.tweets
+        vc.tweetId = id
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let tweet = self.tweetData[indexPath.row]
         return TWTRTweetTableViewCell.heightForTweet(tweet, width: CGRectGetWidth(self.view.bounds)) + 20
     }
+    
 }
 
 extension MainViewController: TweetActionDelegate {

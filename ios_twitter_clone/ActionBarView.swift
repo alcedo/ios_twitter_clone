@@ -9,9 +9,12 @@
 import UIKit
 import SnapKit
 
-protocol TweetActionDelegate {
-    func didTapTweetReplyButton(indexPath: NSIndexPath)
-    func didTapTweetStarButton(indexPath: NSIndexPath)
+@objc protocol TweetActionDelegate {
+    optional func didTapTweetReplyButton(indexPath: NSIndexPath)
+    optional func didTapTweetStarButton(indexPath: NSIndexPath)
+    
+    optional func didTapTweetReplyButton()
+    optional func didTapTweetStarButton()
 }
 
 class ActionBarView: UIView {
@@ -57,13 +60,21 @@ class ActionBarView: UIView {
     
     func didTapReplyButton() {
         if let d = self.delegate {
-            d.didTapTweetReplyButton(self.indexPath)
+            if let path = self.indexPath {
+                d.didTapTweetReplyButton!(self.indexPath)
+            } else {
+                d.didTapTweetReplyButton!()
+            }
         }
     }
     
     func didTapStarButton() {
         if let d = self.delegate {
-            d.didTapTweetStarButton(self.indexPath)
+            if let path = self.indexPath {
+                d.didTapTweetStarButton!(self.indexPath)
+            } else {
+                d.didTapTweetStarButton!()
+            }
         }
     }
 
