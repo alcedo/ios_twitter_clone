@@ -9,11 +9,13 @@
 import UIKit
 import TwitterKit
 import SVProgressHUD
+import SwiftyJSON
 
 class ViewTweetViewController: UIViewController, TweetActionDelegate {
 
     var tweetBody: TWTRTweetView!
     var tweetId: String!
+    var tweetData: JSON?
     var tweet: TWTRTweet? {
         didSet {
             self.buildView()
@@ -75,7 +77,11 @@ class ViewTweetViewController: UIViewController, TweetActionDelegate {
     
     func didTapTweetReplyButton() {
         println("view tweet reply")
-        SVProgressHUD.showSuccessWithStatus("Reply successful")
+        let vc = ComposeTweetViewController()
+        let nvc = UINavigationController(rootViewController: vc)
+        let replyTarget = self.tweetData!["user"]["screen_name"]
+        vc.tweetText = "@\(replyTarget.stringValue) "
+        self.presentViewController(nvc, animated: true, completion: nil)
     }
     func didTapTweetStarButton() {
         println("view tweet star")

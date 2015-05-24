@@ -13,7 +13,7 @@ import SwiftyJSON
 class ComposeTweetViewController: UIViewController, UITextViewDelegate {
     
     var composeField: UITextView!
-    var tweetText = "Test Tweet"
+    var tweetText = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +31,13 @@ class ComposeTweetViewController: UIViewController, UITextViewDelegate {
     
     func buildView() {
         self.composeField = UITextView()
+        self.composeField.text = self.tweetText
         self.composeField.delegate = self
         self.view.addSubview(self.composeField)
         self.composeField.snp_makeConstraints { (make) -> Void in
             make.edges.equalTo(self.view)
         }
+        self.composeField.becomeFirstResponder()
     }
     
     func didTapCancelButton() {
