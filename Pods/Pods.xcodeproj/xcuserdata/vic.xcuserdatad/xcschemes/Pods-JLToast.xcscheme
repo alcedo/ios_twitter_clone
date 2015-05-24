@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B03ACFD021F3D8B3D32677DF"
+               BlueprintIdentifier = "9D6C2004EB4525680B062CB8"
                BuildableName = "JLToast.framework"
                BlueprintName = "Pods-JLToast"
                ReferencedContainer = "container:Pods.xcodeproj">
