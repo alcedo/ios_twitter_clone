@@ -12,9 +12,11 @@ import SnapKit
 @objc protocol TweetActionDelegate {
     optional func didTapTweetReplyButton(indexPath: NSIndexPath)
     optional func didTapTweetStarButton(indexPath: NSIndexPath)
+    optional func didTapTweetRetweetButton(indexPath: NSIndexPath)
     
     optional func didTapTweetReplyButton()
     optional func didTapTweetStarButton()
+    optional func didTapTweetRetweetButton()
 }
 
 class ActionBarView: UIView {
@@ -56,6 +58,28 @@ class ActionBarView: UIView {
             make.left.equalTo(self.reply.snp_right).offset(30)
         }
         
+        
+        self.retweet = UIButton()
+        self.retweet.addTarget(self, action: "didTapRetweetButton", forControlEvents: UIControlEvents.TouchUpInside)
+        let retweetImage = UIImage(named: "retweet")
+        self.retweet.setImage(retweetImage, forState: UIControlState.Normal)
+        self.addSubview(self.retweet)
+        self.retweet.snp_makeConstraints { (make) -> Void in
+            make.width.height.equalTo(iconSize)
+            make.top.equalTo(self)
+            make.left.equalTo(self.star.snp_right).offset(30)
+        }
+        
+    }
+    
+    func didTapRetweetButton() {
+        if let d = self.delegate {
+            if let path = self.indexPath {
+                d.didTapTweetRetweetButton!(self.indexPath)
+            } else {
+                d.didTapTweetRetweetButton!()
+            }
+        }
     }
     
     func didTapReplyButton() {
@@ -77,5 +101,5 @@ class ActionBarView: UIView {
             }
         }
     }
-
+    
 }

@@ -76,16 +76,19 @@ class ViewTweetViewController: UIViewController, TweetActionDelegate {
     }
     
     func didTapTweetReplyButton() {
-        println("view tweet reply")
         let vc = ComposeTweetViewController()
         let nvc = UINavigationController(rootViewController: vc)
         let replyTarget = self.tweetData!["user"]["screen_name"]
         vc.tweetText = "@\(replyTarget.stringValue) "
         self.presentViewController(nvc, animated: true, completion: nil)
     }
+    
     func didTapTweetStarButton() {
-        println("view tweet star")
         SVProgressHUD.showSuccessWithStatus("Starred successful")
+    }
+    
+    func didTapTweetRetweetButton() {
+        SVProgressHUD.showSuccessWithStatus("Retweeted successful")
     }
     
 }

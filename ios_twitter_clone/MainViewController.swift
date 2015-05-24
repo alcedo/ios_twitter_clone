@@ -89,9 +89,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.tweets = JSON(json!)
                     if let jsonArray = json as? NSArray {
                         self.tweetData = TWTRTweet.tweetsWithJSONArray(jsonArray as [AnyObject]) as! [TWTRTweet]
-                        println(jsonArray)
                     }
-                    println(self.tweets![0]["text"])
+//                    println(self.tweets![0]["text"])
                 }else {
                     println("Error: \(connectionError)")
                 }
@@ -169,6 +168,10 @@ extension MainViewController: TweetActionDelegate {
     func didTapTweetStarButton(indexPath: NSIndexPath) {
         println("tap on star btn: \(indexPath.row)")
         SVProgressHUD.showSuccessWithStatus("Starred successful")
+    }
+    
+    func didTapTweetRetweetButton(indexPath: NSIndexPath) {
+        SVProgressHUD.showSuccessWithStatus("Retweet successful")
     }
 }
 
