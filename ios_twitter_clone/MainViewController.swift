@@ -15,6 +15,7 @@ import Alamofire
 import SVProgressHUD
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TWTRTweetViewDelegate {
+    var reloadView: (() -> Void)?
     
     /// Variables
     var tweets: JSON?
@@ -32,7 +33,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var delegate: ContainerViewDelegate?
     
-    
     /**
      Main Methods
     */
@@ -44,6 +44,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "didTapNewTweetButton")
         self.loadTweet()
         self.buildView()
+        
+        
+        self.reloadView = { () -> Void in
+            self.loadTweet()
+        }
 
     }
     
@@ -85,26 +90,26 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let request = Twitter.sharedInstance().APIClient.URLRequestWithMethod("GET", URL: statusesShowEndpoint, parameters: nil, error: &clientError)
         if request != nil {
             
-            Alamofire.request(.GET, "https://gist.githubusercontent.com/alcedo/5aa8ce42f516a68d52e5/raw/0334bf9f825cbc2f8c8978f4aa43f287745de1fa/twitter_home")
-                .responseJSON { (request, response, data, error) in
-                    self.tweetData = TWTRTweet.tweetsWithJSONArray(data as! [AnyObject]) as! [TWTRTweet]
-                    self.tweets = JSON(data!)
-                }
-            
-//            Twitter.sharedInstance().APIClient.sendTwitterRequest(request) {
-//                (response, data, connectionError) -> Void in
-//                if (connectionError == nil) {
-//                    var jsonError : NSError?
-//                    let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError)
-//                    self.tweets = JSON(json!)
-//                    if let jsonArray = json as? NSArray {
-//                        self.tweetData = TWTRTweet.tweetsWithJSONArray(jsonArray as [AnyObject]) as! [TWTRTweet]
-//                    }
-////                    println(self.tweets![0]["text"])
-//                }else {
-//                    println("Error: \(connectionError)")
+//            Alamofire.request(.GET, "https://gist.githubusercontent.com/alcedo/5aa8ce42f516a68d52e5/raw/0334bf9f825cbc2f8c8978f4aa43f287745de1fa/twitter_home")
+//                .responseJSON { (request, response, data, error) in
+//                    self.tweetData = TWTRTweet.tweetsWithJSONArray(data as! [AnyObject]) as! [TWTRTweet]
+//                    self.tweets = JSON(data!)
 //                }
-//            }
+            
+            Twitter.sharedInstance().APIClient.sendTwitterRequest(request) {
+                (response, data, connectionError) -> Void in
+                if (connectionError == nil) {
+                    var jsonError : NSError?
+                    let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError)
+                    self.tweets = JSON(json!)
+                    if let jsonArray = json as? NSArray {
+                        self.tweetData = TWTRTweet.tweetsWithJSONArray(jsonArray as [AnyObject]) as! [TWTRTweet]
+                    }
+//                    println(self.tweets![0]["text"])
+                }else {
+                    println("Error: \(connectionError)")
+                }
+            }
 
             
         }else {

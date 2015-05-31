@@ -24,7 +24,7 @@ class ContainerViewController: UIViewController, ContainerViewDelegate {
     
     var leftViewController: SidePanelViewController?
     var currentState: SlideOutState = .BothCollapsed
-    let centerPanelExpandedOffset: CGFloat = 60
+    let centerPanelExpandedOffset: CGFloat = 130
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +57,13 @@ class ContainerViewController: UIViewController, ContainerViewDelegate {
     func addLeftPanelViewController() {
         if (leftViewController == nil) {
             leftViewController = SidePanelViewController()
+            leftViewController?.profileLinkCallBack = {() -> Void in
+                self.loadProfileView()
+            }
+            leftViewController?.homeLinkCallBack = {() -> Void in
+                self.centerViewController.reloadView!()
+                self.toggleLeftPanel()
+            }
             self.addChildSidePanelController(leftViewController!)
         }
     }
@@ -78,6 +85,11 @@ class ContainerViewController: UIViewController, ContainerViewDelegate {
                 self.leftViewController = nil;
             }
         }
+    }
+    
+    func loadProfileView() {
+        let nvc = UINavigationController(rootViewController: ProfileViewController())
+        self.presentViewController(nvc, animated: true, completion: nil)
     }
     
     func animateCenterPanelXPosition(#targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
