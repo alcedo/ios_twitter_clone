@@ -17,6 +17,8 @@
 		1CB43C551B0EE1000094615B /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB43C511B0EE1000094615B /* TwitterCore.framework */; };
 		1CB43C581B0EE9CA0094615B /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB43C571B0EE9CA0094615B /* Auth.swift */; };
 		1CB43C5A1B0EF0170094615B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB43C591B0EF0170094615B /* MainViewController.swift */; };
+		1CC1F2F21B1A70DF00C2B7FB /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC1F2F11B1A70DF00C2B7FB /* ContainerViewController.swift */; };
+		1CC1F2F41B1A70FC00C2B7FB /* SidePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC1F2F31B1A70FC00C2B7FB /* SidePanelViewController.swift */; };
 		1CDCB68E1B0EDDE1003797B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDCB68D1B0EDDE1003797B4 /* AppDelegate.swift */; };
 		1CDCB6901B0EDDE1003797B4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDCB68F1B0EDDE1003797B4 /* LoginViewController.swift */; };
 		1CDCB6931B0EDDE1003797B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CDCB6911B0EDDE1003797B4 /* Main.storyboard */; };
@@ -48,6 +50,8 @@
 		1CB43C511B0EE1000094615B /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		1CB43C571B0EE9CA0094615B /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Auth.swift; path = ../Auth.swift; sourceTree = "<group>"; };
 		1CB43C591B0EF0170094615B /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		1CC1F2F11B1A70DF00C2B7FB /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		1CC1F2F31B1A70FC00C2B7FB /* SidePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SidePanelViewController.swift; path = ../SidePanelViewController.swift; sourceTree = "<group>"; };
 		1CDCB6881B0EDDE1003797B4 /* ios_twitter_clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios_twitter_clone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CDCB68C1B0EDDE1003797B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CDCB68D1B0EDDE1003797B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 				1CDCB68F1B0EDDE1003797B4 /* LoginViewController.swift */,
 				1C9114471B113BBB008E1C3B /* ViewTweetViewController.swift */,
 				1CB43C591B0EF0170094615B /* MainViewController.swift */,
+				1CC1F2F11B1A70DF00C2B7FB /* ContainerViewController.swift */,
 				1CDCB6911B0EDDE1003797B4 /* Main.storyboard */,
 				1CDCB6941B0EDDE1003797B4 /* Images.xcassets */,
 				1CDCB6961B0EDDE1003797B4 /* LaunchScreen.xib */,
@@ -119,6 +124,7 @@
 				1C0EBA6F1B0F102000059183 /* ActionBarView.swift */,
 				1C2B1AE91B115D0600933694 /* extensions.swift */,
 				1C2B1AEB1B1162FD00933694 /* ComposeTweetViewController.swift */,
+				1CC1F2F31B1A70FC00C2B7FB /* SidePanelViewController.swift */,
 			);
 			path = ios_twitter_clone;
 			sourceTree = "<group>";
@@ -337,11 +343,13 @@
 			files = (
 				1C9114481B113BBB008E1C3B /* ViewTweetViewController.swift in Sources */,
 				1C0EBA701B0F102000059183 /* ActionBarView.swift in Sources */,
+				1CC1F2F41B1A70FC00C2B7FB /* SidePanelViewController.swift in Sources */,
 				1C2B1AEC1B1162FD00933694 /* ComposeTweetViewController.swift in Sources */,
 				1CDCB6901B0EDDE1003797B4 /* LoginViewController.swift in Sources */,
 				1C2B1AEA1B115D0600933694 /* extensions.swift in Sources */,
 				1CDCB68E1B0EDDE1003797B4 /* AppDelegate.swift in Sources */,
 				1CB43C581B0EE9CA0094615B /* Auth.swift in Sources */,
+				1CC1F2F21B1A70DF00C2B7FB /* ContainerViewController.swift in Sources */,
 				1CB43C5A1B0EF0170094615B /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

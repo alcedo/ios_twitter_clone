@@ -23,10 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Init window
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-//        let navController = UINavigationController(rootViewController: mainViewController)
-        
-        let mainViewController = LoginViewController()
-        self.window?.rootViewController = mainViewController
+        self.window?.rootViewController = LoginViewController()
         self.window?.makeKeyAndVisible()
         return true
     }

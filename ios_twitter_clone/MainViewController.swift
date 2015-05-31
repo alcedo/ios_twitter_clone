@@ -16,6 +16,7 @@ import SVProgressHUD
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TWTRTweetViewDelegate {
     
+    /// Variables
     var tweets: JSON?
     let tweetTableReuseIdentifier = "TweetCell"
     var tableView: UITableView!
@@ -29,14 +30,21 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    var delegate: ContainerViewDelegate?
+    
+    
+    /**
+     Main Methods
+    */
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
         self.title = "Tweets"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Log Out", style: .Plain, target: self, action: "didTapLogOutButton")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Settings", style: .Plain, target: self, action: "didTapSettingsButton")
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "didTapNewTweetButton")
         self.loadTweet()
         self.buildView()
+
     }
     
     func buildView() {
@@ -55,8 +63,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.addSubview(self.refreshControl)
     }
     
-    func didTapLogOutButton() {
-        println("log out")
+    func didTapSettingsButton() {
+        if let delegate = self.delegate {
+            delegate.toggleLeftPanel();
+        }
     }
     
     func didTapNewTweetButton() {
@@ -75,26 +85,26 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let request = Twitter.sharedInstance().APIClient.URLRequestWithMethod("GET", URL: statusesShowEndpoint, parameters: nil, error: &clientError)
         if request != nil {
             
-//            Alamofire.request(.GET, "https://gist.githubusercontent.com/alcedo/5aa8ce42f516a68d52e5/raw/0334bf9f825cbc2f8c8978f4aa43f287745de1fa/twitter_home")
-//                .responseJSON { (request, response, data, error) in
-//                    self.tweetData = TWTRTweet.tweetsWithJSONArray(data as! [AnyObject]) as! [TWTRTweet]
-//                    self.tweets = JSON(data!)
-//                }
-//
-            Twitter.sharedInstance().APIClient.sendTwitterRequest(request) {
-                (response, data, connectionError) -> Void in
-                if (connectionError == nil) {
-                    var jsonError : NSError?
-                    let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError)
-                    self.tweets = JSON(json!)
-                    if let jsonArray = json as? NSArray {
-                        self.tweetData = TWTRTweet.tweetsWithJSONArray(jsonArray as [AnyObject]) as! [TWTRTweet]
-                    }
-//                    println(self.tweets![0]["text"])
-                }else {
-                    println("Error: \(connectionError)")
+            Alamofire.request(.GET, "https://gist.githubusercontent.com/alcedo/5aa8ce42f516a68d52e5/raw/0334bf9f825cbc2f8c8978f4aa43f287745de1fa/twitter_home")
+                .responseJSON { (request, response, data, error) in
+                    self.tweetData = TWTRTweet.tweetsWithJSONArray(data as! [AnyObject]) as! [TWTRTweet]
+                    self.tweets = JSON(data!)
                 }
-            }
+            
+//            Twitter.sharedInstance().APIClient.sendTwitterRequest(request) {
+//                (response, data, connectionError) -> Void in
+//                if (connectionError == nil) {
+//                    var jsonError : NSError?
+//                    let json: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &jsonError)
+//                    self.tweets = JSON(json!)
+//                    if let jsonArray = json as? NSArray {
+//                        self.tweetData = TWTRTweet.tweetsWithJSONArray(jsonArray as [AnyObject]) as! [TWTRTweet]
+//                    }
+////                    println(self.tweets![0]["text"])
+//                }else {
+//                    println("Error: \(connectionError)")
+//                }
+//            }
 
             
         }else {
@@ -174,4 +184,9 @@ extension MainViewController: TweetActionDelegate {
         SVProgressHUD.showSuccessWithStatus("Retweet successful")
     }
 }
+
+
+
+
+    
 

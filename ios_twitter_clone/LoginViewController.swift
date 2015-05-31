@@ -44,9 +44,8 @@ class LoginViewController: UIViewController {
     }
     
     func showMainViewController() {
-        let vc = MainViewController()
-        let nvc = UINavigationController(rootViewController: vc)
-        self.presentViewController(nvc, animated: false, completion: nil)
+        let vc = ContainerViewController()
+        self.presentViewController(vc, animated: false, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
