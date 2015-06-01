@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C0EBA701B0F102000059183 /* ActionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0EBA6F1B0F102000059183 /* ActionBarView.swift */; };
+		1C2AF8DD1B1C2178001EA1AA /* SimpleWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2AF8DC1B1C2178001EA1AA /* SimpleWebViewController.m */; };
 		1C2B1AEA1B115D0600933694 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B1AE91B115D0600933694 /* extensions.swift */; };
 		1C2B1AEC1B1162FD00933694 /* ComposeTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B1AEB1B1162FD00933694 /* ComposeTweetViewController.swift */; };
 		1C38B7E61B1A903A006F1B1A /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C38B7E51B1A903A006F1B1A /* HTTPClient.swift */; };
@@ -43,6 +44,8 @@
 /* Begin PBXFileReference section */
 		0AE460C2E9341EE8EB945B2F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		1C0EBA6F1B0F102000059183 /* ActionBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionBarView.swift; sourceTree = "<group>"; };
+		1C2AF8DB1B1C2178001EA1AA /* SimpleWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleWebViewController.h; sourceTree = "<group>"; };
+		1C2AF8DC1B1C2178001EA1AA /* SimpleWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleWebViewController.m; sourceTree = "<group>"; };
 		1C2B1AE91B115D0600933694 /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		1C2B1AEB1B1162FD00933694 /* ComposeTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeTweetViewController.swift; sourceTree = "<group>"; };
 		1C38B7E51B1A903A006F1B1A /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPClient.swift; path = ../HTTPClient.swift; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				1C2B1AEB1B1162FD00933694 /* ComposeTweetViewController.swift */,
 				1CC1F2F31B1A70FC00C2B7FB /* SidePanelViewController.swift */,
 				1C38B7E51B1A903A006F1B1A /* HTTPClient.swift */,
+				1C2AF8DB1B1C2178001EA1AA /* SimpleWebViewController.h */,
+				1C2AF8DC1B1C2178001EA1AA /* SimpleWebViewController.m */,
 			);
 			path = ios_twitter_clone;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 				1CC1F2F41B1A70FC00C2B7FB /* SidePanelViewController.swift in Sources */,
 				1C2B1AEC1B1162FD00933694 /* ComposeTweetViewController.swift in Sources */,
 				1CDCB6901B0EDDE1003797B4 /* LoginViewController.swift in Sources */,
+				1C2AF8DD1B1C2178001EA1AA /* SimpleWebViewController.m in Sources */,
 				1C2B1AEA1B115D0600933694 /* extensions.swift in Sources */,
 				1C38B7EC1B1ADA0F006F1B1A /* ProfileViewController.swift in Sources */,
 				1C38B7E61B1A903A006F1B1A /* HTTPClient.swift in Sources */,

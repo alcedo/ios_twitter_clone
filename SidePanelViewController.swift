@@ -16,6 +16,7 @@ import Alamofire
 class SidePanelViewController: UIViewController {
     var profileLinkCallBack: (() -> Void)?
     var homeLinkCallBack: (() -> Void)?
+    var mentionLinkCallBack: (() -> Void)?
 
     var userDetails: JSON?
     
@@ -45,6 +46,7 @@ class SidePanelViewController: UIViewController {
     func buildView() {
         let tapProfileGesture = UITapGestureRecognizer(target: self, action: "didTapProfileLink")
         let tapHomeGesture = UITapGestureRecognizer(target: self, action: "didTapHomeLink")
+        let tapMentionsGesture = UITapGestureRecognizer(target: self, action: "didTapMentionLink")
         
         self.userProfileImage = UIImageView()
         self.view.addSubview(self.userProfileImage)
@@ -91,6 +93,7 @@ class SidePanelViewController: UIViewController {
         self.view.addSubview(self.homeTimelineLink)
         
         self.mentionsLink = UITableViewCell()
+        self.mentionsLink.addGestureRecognizer(tapMentionsGesture)
         self.mentionsLink.backgroundColor = self.profileLink.backgroundColor
         self.mentionsLink.imageView!.image = UIImage(named: "mentions")
         self.mentionsLink.textLabel?.text = "Mentions"
@@ -155,6 +158,12 @@ class SidePanelViewController: UIViewController {
     
     func didTapProfileLink() {
         if let cb = self.profileLinkCallBack {
+            cb()
+        }
+    }
+    
+    func didTapMentionLink() {
+        if let cb = self.mentionLinkCallBack {
             cb()
         }
     }

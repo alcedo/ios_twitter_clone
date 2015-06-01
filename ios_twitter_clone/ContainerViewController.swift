@@ -37,6 +37,14 @@ class ContainerViewController: UIViewController, ContainerViewDelegate {
         self.view.addSubview(self.centerNavigationController.view)
         self.addChildViewController(self.centerNavigationController)
         self.centerNavigationController.didMoveToParentViewController(self)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: "swipeLeftGestureHandler:")
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: "swipeRightGestureHandler:")
+        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipeRight)
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,7 +72,27 @@ class ContainerViewController: UIViewController, ContainerViewDelegate {
                 self.centerViewController.reloadView!()
                 self.toggleLeftPanel()
             }
+            leftViewController?.mentionLinkCallBack = {() -> Void in
+                let vc = SimpleWebViewController(urlToLoad: "https://mobile.twitter.com/i/connect");
+                let nvc = UINavigationController(rootViewController: vc)
+                self.presentViewController(nvc, animated: true, completion: nil)
+            }
+            
             self.addChildSidePanelController(leftViewController!)
+        }
+    }
+    
+    func swipeLeftGestureHandler(gestureRecognizer: UISwipeGestureRecognizer){
+        let expanded = (currentState == .LeftPanelExpanded)
+        if expanded {
+            self.toggleLeftPanel()
+        }
+    }
+    
+    func swipeRightGestureHandler(gestureRecognizer: UISwipeGestureRecognizer){
+        let notExpanded = (currentState != .LeftPanelExpanded)
+        if notExpanded {
+            self.toggleLeftPanel()
         }
     }
     

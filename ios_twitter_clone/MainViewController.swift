@@ -52,6 +52,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
     
+    
     func buildView() {
         self.tableView = UITableView()
         self.view.addSubview(self.tableView)
@@ -68,6 +69,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.addSubview(self.refreshControl)
     }
     
+    //PRAGMA mark -- handlers
     func didTapSettingsButton() {
         if let delegate = self.delegate {
             delegate.toggleLeftPanel();
