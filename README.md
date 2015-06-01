@@ -7,7 +7,7 @@ Time spent: `<15h>`
 - [x] Contains the user header view
 - [x] Contains a section with the users basic stats: # tweets, # following, # followers
 - [x] Tapping on a user image should bring up that user's profile page
-
+![Video Walkthrough](http://cl.ly/image/1x411c2f0x3B/walkthrough.gif)
 
 
 
